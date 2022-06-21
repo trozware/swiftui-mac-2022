@@ -11,12 +11,12 @@ struct Menus: Commands {
       .keyboardShortcut("f")
     }
 
-    CommandGroup(after: .newItem) {
-      NavigationLink(destination: SamplesView()) {
-        Text("Show UI Samples")
-      }
-      .keyboardShortcut("u")
-    }
+//    CommandGroup(after: .newItem) {
+//      NavigationLink(destination: SamplesView()) {
+//        Text("Show UI Samples")
+//      }
+//      .keyboardShortcut("u")
+//    }
 
     CommandGroup(replacing: .help) {
       Button("Read Accompanying Article at troz.net") {

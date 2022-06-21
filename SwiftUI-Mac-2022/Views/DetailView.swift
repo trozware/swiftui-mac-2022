@@ -18,7 +18,7 @@ struct DetailView: View {
 
       Spacer()
       Button("Show UI Samples") {
-        openWindow(value: "samples")
+        openWindow(id: "ui_samples")
       }
       .padding(.bottom)
     }
