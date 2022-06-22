@@ -40,9 +40,9 @@ struct SwiftUI_Mac_2022App: App {
     .keyboardShortcut("u")
     // The default modifiers don't appear to work
     .defaultPosition(.topLeading)
-
-
-    MenuBarExtra("HTTP Status Code", systemImage: "network", isInserted: $showMenuBar) {
+    .defaultSize(width: 600, height: 600)
+    
+    MenuBarExtra("HTTP Status Code", systemImage: "number.circle", isInserted: $showMenuBar) {
       MenuBarView(httpSections: $httpSections)
     }
   }
