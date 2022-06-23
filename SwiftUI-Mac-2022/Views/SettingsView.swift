@@ -12,7 +12,7 @@ struct SettingsView: View {
   @AppStorage("showMenuBar") var showMenuBar = true
 
   var body: some View {
-    VStack(alignment: .leading) {
+    Form {
       Toggle(isOn: $showCopyright) {
         Text("Show Copyright Notice")
       }
@@ -20,7 +20,9 @@ struct SettingsView: View {
         Text("Show Menu Bar App")
       }
     }
-    .frame(width: 220, height: 100)
+    .toggleStyle(.switch)
+    .formStyle(.grouped)
+    .frame(width: 300, height: 130)
     .navigationTitle("Settings")
   }
 }

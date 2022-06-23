@@ -27,10 +27,8 @@ struct FormSamplesView: View {
 
           Form {
             Toggle("Check 1:", isOn: $checkOne)
-              .toggleStyle(.switch)
 
             Toggle("Check 2:", isOn: $checkTwo)
-              .toggleStyle(.switch)
 
             Picker("Select One:", selection: $pickChoice) {
               Text("Option 1").tag(1)
@@ -38,6 +36,7 @@ struct FormSamplesView: View {
               Text("Option 3").tag(3)
             }
           }
+          .toggleStyle(.switch)
           .formStyle(.grouped)
 
           HStack {
