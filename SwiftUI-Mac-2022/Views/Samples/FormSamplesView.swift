@@ -15,15 +15,13 @@ struct FormSamplesView: View {
     VStack {
       GroupBox {
         Form {
-          TextField("Enter your email address", text: $email)
+          TextField("Enter your email address:", text: $email)
             .focused($emailFieldHasFocus)
 
-          SecureField("Enter your password", text: $password)
+          SecureField("Enter your password:", text: $password)
 
-          LabeledContent("Enter your birthday:") {
-            DatePicker("", selection: $selectedDate, displayedComponents: [.date])
-              .frame(maxWidth: 150)
-          }.padding(.bottom)
+          DatePicker("Enter your birthday:", selection: $selectedDate, displayedComponents: [.date])
+            .padding(.bottom)
 
           Form {
             Toggle("Check 1:", isOn: $checkOne)
