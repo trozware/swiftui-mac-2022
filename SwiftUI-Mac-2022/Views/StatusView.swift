@@ -25,14 +25,9 @@ struct StatusView: View {
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)
     .navigationTitle("\(sectionTitle) - \(httpStatus.title)")
-    .task {
-      await getCatImage(status: httpStatus)
-    }
-    .onChange(of: httpStatus) { newStatus in
+    .task(id: httpStatus) {
       catImage = nil
-      Task {
-        await getCatImage(status: newStatus)
-      }
+      await getCatImage(status: httpStatus)
     }
   }
 
