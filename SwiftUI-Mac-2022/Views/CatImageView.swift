@@ -8,14 +8,14 @@ struct CatImageView: View {
     .publisher(for: .flipImage)
     .receive(on: RunLoop.main)
 
-  let catImage: NSImage
+  let catImage: Image
   let statusCode: String
 
   @State private var imageIsFlipped = false
   
   var body: some View {
     VStack {
-      Image(nsImage: catImage)
+      catImage
         .resizable()
         .aspectRatio(contentMode: .fit)
         .rotation3DEffect(Angle(degrees: imageIsFlipped ? 180 : 0),
@@ -39,7 +39,7 @@ struct CatImageView: View {
 
 struct CatImageView_Previews: PreviewProvider {
   static var previews: some View {
-    let image = NSImage(systemSymbolName: "photo.artframe", accessibilityDescription: "photo")!
+    let image = Image(systemName: "photo.artframe")
     return CatImageView(catImage: image, statusCode: "000")
   }
 }

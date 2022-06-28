@@ -14,36 +14,19 @@ struct StatusView: View {
       Text(httpStatus.title)
         .font(.title)
 
-      if let catImage {
-        CatImageView(catImage: catImage, statusCode: httpStatus.code)
-      } else {
+      AsyncImage(url: httpStatus.imageUrl) { img in
+        CatImageView(catImage: img, statusCode: httpStatus.code)
+      } placeholder: {
         Spacer()
         ProgressView()
+        Spacer()
       }
+      .id(httpStatus)   // this resets the AsyncImage whenever httpStatus changes
 
       Spacer()
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)
     .navigationTitle("\(sectionTitle) - \(httpStatus.title)")
-    .task(id: httpStatus) {
-      catImage = nil
-      await getCatImage(status: httpStatus)
-    }
-  }
-
-  func getCatImage(status: HttpStatus) async {
-    let request = URLRequest(url: status.imageUrl)
-
-    do {
-      let (data, response) = try await URLSession.shared.data(for: request)
-      guard let response = response as? HTTPURLResponse,
-            response.statusCode == 200 else {
-        return
-      }
-      catImage = NSImage(data: data)
-    } catch {
-      print(error)
-    }
   }
 }
 
